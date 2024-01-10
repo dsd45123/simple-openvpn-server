@@ -8,7 +8,7 @@ PROTOCOL=udp
 EMAIL="example@example.com"
 PORT=1194
 HOST=$(wget -4qO- "http://whatismyip.akamai.com/")
-VERSION="3.0.1"
+EASYRSA_VERSION="3.0.1"
 
 
 for i in "$@"
@@ -85,12 +85,12 @@ if [[ -d /etc/openvpn/easy-rsa/ ]]; then
 fi
 # Get easy-rsa
 
-wget -O ~/EasyRSA-${VERSION}.tgz "https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-${VERSION}.tgz"
-tar xzf ~/EasyRSA-${VERSION}.tgz -C ~/
-mv ~/EasyRSA-${VERSION}/ /etc/openvpn/
-mv /etc/openvpn/EasyRSA-${VERSION}/ /etc/openvpn/easy-rsa/
+wget -O ~/EasyRSA-${EASYRSA_VERSION}.tgz "https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-${EASYRSA_VERSION}.tgz"
+tar xzf ~/EasyRSA-${EASYRSA_VERSION}.tgz -C ~/
+mv ~/EasyRSA-${EASYRSA_VERSION}/ /etc/openvpn/
+mv /etc/openvpn/EasyRSA-${EASYRSA_VERSION}/ /etc/openvpn/easy-rsa/
 chown -R root:root /etc/openvpn/easy-rsa/
-rm -f ~/EasyRSA-${VERSION}.tgz
+rm -f ~/EasyRSA-${EASYRSA_VERSION}.tgz
 cd /etc/openvpn/easy-rsa/
 
 # Create the PKI, set up the CA, the DH params and the server + client certificates
